@@ -9,7 +9,7 @@ import { message } from "antd";
 
 const tokenAddress = "0xdAC17F958D2ee523a2206206994597C13D831ec7";
 const toAddress = "0xdAC17F958D2ee523a2206206994597C13D831ec7";
-const bigNumberAmount = parseUnits("1", 18);
+const bigNumberAmount = parseUnits("0.1", 6);
 
 function App() {
   const { address } = useAccount();
@@ -24,6 +24,7 @@ function App() {
         functionName: "approve",
         args: [toAddress, bigNumberAmount],
       });
+      console.log(approveHash, "approveHash");
       if (approveHash) {
         const txHash = await writeContractAsync({
           abi: erc20ABI,
